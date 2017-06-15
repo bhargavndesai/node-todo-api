@@ -9,10 +9,11 @@ var {User} =  require('./models/user');
 
 var app = express();
 
+app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
 
-app.listen(3000, () => {
-  console.log('Started on port 3000');
+app.listen(app.get('port'), () => {
+  console.log(`listening to port : ${app.get('port')}`);
 });
 
 app.post('/todos', (req, res) => {
